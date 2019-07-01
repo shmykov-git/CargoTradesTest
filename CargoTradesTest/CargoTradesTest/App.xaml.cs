@@ -11,7 +11,7 @@ namespace CargoTradesTest
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MainPage(){BindingContext = new ModelBuilder().GetModel()};
         }
 
         protected override void OnStart()
