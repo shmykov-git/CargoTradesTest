@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shared;
+using WebServer.Tools;
 
 namespace WebServer.Controllers
 {
@@ -6,21 +8,26 @@ namespace WebServer.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private string LastData { get; set; }
+        private DbProvider dataProvider = new DbProvider();
 
-        // GET api/values
+        [HttpGet]
+        public ActionResult<string> Get()
+        {
+            return "Ready";
+        }
+
         [HttpGet("GetData")]
         public ActionResult<string> GetData()
         {
-            return LastData??"Данные еще не приходили";
+            return dataProvider.GetData();
         }
 
 
         // POST api/values
         [HttpPost("SendData")]
-        public void SendData([FromBody] string value)
+        public void SendData([FromBody] MyData data)
         {
-            LastData = value;
+            dataProvider.SaveData(data.Data);
         }
 
     }
