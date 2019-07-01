@@ -5,8 +5,9 @@
              x:Class="CargoTradesTest.MainPage">
 
     <StackLayout>
-        <Button Command="GetData" Text="Получить данные"></Button>
-        <Button Command="SendData" Text="Отправить данные"></Button>
+        <Entry Text="{Binding Data}"></Entry>
+        <Button Command="{Binding GetData}" Text="Получить данные"></Button>
+        <Button Command="{Binding SendData}" Text="Отправить данные"></Button>
     </StackLayout>
 
 </ContentPage>
